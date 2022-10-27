@@ -1,0 +1,18 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="d-flex justify-content-between">
+            <button (click)="add()" type="button" class="btn btn-primary">
+                Add Phone
+            </button>
+            <h3>NgRx Component Store</h3>
+        </div>
+    </div>
+    <div class="books mt-5">
+        <ngb-alert *ngIf="(error$|async)" [type]="'danger'">{{(error$|async)}}</ngb-alert>
+        <div class="d-flex flex-wrap" style="gap:20px">
+            <div *ngFor="let phone of (phones$|async)" class="card" style="width: 18rem;">
+                <app-phone (update)="update($event)" (remove)="remove($event)" [phone]="phone"></app-phone>
+            </div>
+        </div>
+    </div>
+</div>
